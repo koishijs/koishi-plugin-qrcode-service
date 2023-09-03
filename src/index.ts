@@ -3,12 +3,12 @@ import Jimp from 'jimp'
 import type { ScanResult, ImageSource, ScanOptions } from 'qr-scanner-wechat'
 import { QRCodeToDataURLOptions, toDataURL } from 'qrcode'
 
+export type QRCodeEncodeOptions = QRCodeToDataURLOptions
 export const name = 'qrcode'
 
 export interface Config { }
 
 export const Config: Schema<Config> = Schema.object({})
-
 
 declare module 'koishi' {
   interface Context {
@@ -53,9 +53,7 @@ class Qrcode extends Service {
       width: width,
       height: height,
     })
-    return {
-      ...result
-    }
+    return result
   }
 
   public async decodeFromUrl(url: string): Promise<Result> {
@@ -65,7 +63,8 @@ class Qrcode extends Service {
     return this.decode(response)
   }
 
-  public async encode(text: string, options?: QRCodeToDataURLOptions) {
+  /** Returns a Data URI containing a representation of the QR Code image. */
+  public async encode(text: string, options?: QRCodeEncodeOptions) {
     return toDataURL(text, options)
   }
 }
