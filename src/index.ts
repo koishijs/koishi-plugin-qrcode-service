@@ -33,7 +33,8 @@ class Qrcode extends Service {
   }
 
   async start() {
-    const { scan } = await import('qr-scanner-wechat')
+    // @ts-ignore
+    const { scan } = await (new Function(`return import('qr-scanner-wechat')`))();
     this.scan = scan
   }
 

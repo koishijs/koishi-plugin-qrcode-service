@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-qrcode-service",
   "description": "提供二维码服务",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -16,7 +16,7 @@
     "plugin"
   ],
   "peerDependencies": {
-    "koishi": "^4.14.2"
+    "koishi": "^4.14.4"
   },
   "dependencies": {
     "jimp": "^0.22.10",
@@ -28,7 +28,9 @@
   },
   "koishi": {
     "service": {
-      "implements": ["qrcode"]
+      "implements": [
+        "qrcode"
+      ]
     }
   }
 }
